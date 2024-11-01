@@ -1,12 +1,9 @@
-# Your Name Here
+# Nikita Petrey
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
-# Sources, people worked with, help given to: 
-# your
-# comments
-# here
+# 10/28/2024
+# Lab 07
+# Lab Section: 16
+# Sources, people worked with, help given to: TA's
 
 
 # Prompt the user for an upper bound 
@@ -17,7 +14,17 @@
     # If a user did not enter a number output a statement saying so
 # You will continue to prompt the user until a proper integer value is entered
 
+upper_bound = 0
+while True:
+    upper_bound = input("Enter upper bound: ")
+    if upper_bound.isdigit():
+        break
+
 factorial = 1
+i = 1
+while i <= int(upper_bound):
+    i += 1
+    factorial *= i
 
 print(f"The result of the factorial based on the given bound is {factorial}")
 
@@ -36,8 +43,20 @@ print("*"*75)
     # I recommend checking out: https://www.w3schools.com/python/ref_string_replace.asp to figure out how one may remove a character from a string
 # All this together means you will have an intensive while loop that includes multiple if statements, likely with some nesting 
 # The sum should start at 0 
-
-num_sum = 0 
+num_sum = 0
+while True:
+    num = input("Enter integer (enter exit to stop):")
+    if num.lower() == "exit":
+        break
+    if num.startswith("-") and num[1:].isnumeric():
+        number = int(num)
+        num_sum += number
+    elif num.isnumeric():
+        number = int(num)
+        num_sum += number
+    else: 
+        break
+    
 
 print(f"Your final sum is {num_sum}")
 
@@ -59,4 +78,24 @@ print("*"*75)
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
-        
+
+result = 0
+while True:
+    operation = input("Enter operation (then enter exit):")
+    if operation == "exit":
+        break
+    expression = operation.replace("", "")
+    if "+" in expression:
+        num1, num2 = expression.split("+")
+        result = int(num1) + int(num2)
+    elif "-" in expression:
+        num1, num2 = expression.split("-")
+        result = int(num1) - int(num2)
+    elif "/" in expression:
+        num1, num2 = expression.split("/")
+        result = int(num1) / int(num2)
+    elif "*" in expression:
+        num1, num2 = expression.split("*")
+        result = int(num1) * int(num2)
+
+print(f'The result of your operation is {result}')
